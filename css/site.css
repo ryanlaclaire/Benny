@@ -76,3 +76,7 @@ main>.container {
 #copyright {
     font-size: .8rem;
 }
+
+.appName {
+    font-family: 'Racing Sans One', cursive;
+}
