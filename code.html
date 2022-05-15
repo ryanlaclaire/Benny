@@ -61,17 +61,83 @@
             <div class="col col-lg-8">
                 <pre class="line-numbers">
                     <code class="language-javascript">
-                        //Call Hello World
-                        function helloWorld() {
-                            alert("Hello World");
+                        //Get the values from the Page
+                        //Start of Controller function
+                        function getValues() {
+                            //get values from the page
+                            let startValue = document.getElementById("startValue").value;
+                            let endValue = document.getElementById("endValue").value;
+                        
+                            //Validate data from input
+                            //attempt to parse into INT
+                            startValue = parseInt(startValue);
+                            endValue = parseInt(endValue);
+                        
+                            //if statement to validate data
+                            if(Number.isInteger(startValue) && Number.isInteger(endValue)) {
+                        
+                                //All is good and continue
+                                //call generateNumbers()
+                                let numbers = generateNumbers(startValue, endValue);
+                                //call displayNumbers()
+                                displayNumbers(numbers);
+                        
+                            }else{
+                                alert("You must enter valid numbers.")
+                            }
+                        
+                            
+                        }
+                        
+                        //Generate #s from startValue to endValue
+                        //Logic function(s)
+                        function generateNumbers(sValue, eValue) {
+                            //create empty array
+                            let numbers = [];
+                        
+                            //we want to get all numbers from start to end
+                            for (let i = sValue; i <= eValue; i++){
+                                //loops until conditions are true
+                                numbers.push(i);
+                            }
+                        
+                            return numbers;
+                        }
+                        
+                        //Display numbers and mark even numbers BOLD
+                        //Display or view functions
+                        function displayNumbers(numbers) {  
+                        
+                            let templateRows = "";
+                            let className = "even";
+                        
+                            for (let index = 0; index < numbers.length; index++) {
+                        
+                                    let number = numbers[index];
+                                    if(number % 2 == 0){
+                                        className = "even";
+                                    }else{
+                                        className = "odd";
+                                    }
+                                    //This does not render correctly with Prism, see the source code
+                                    templateRows += `<tr><td class=${className}>${number}</td></tr>`;
+                        
+                                }
+                        
+                            document.getElementById("results").innerHTML = templateRows;
+                        
                         }
                     </code> 
                 </pre>
             </div>
             <div class="col col-lg-4">
-                <p>The Code is structured in one function.</p>
-                <h5>Hello World</h5>
-                <p>Hello World is a function that displays an alert with a message of "Hello World".</p>
+                <p>The Code for BENNY is structured in three functions.</p>
+                <h5>Get Values</h5>
+                <p>Get Values is a function that grabs the start and end values from the input boxes on the page. It them takes those values and validates the data by first attempting to parse it into integers. If that passes the test, it calls the next function of Generate Numbers and asks for that data back.</p>
+                <h5>Generate Numbers</h5>
+                <p>Generate Numbers is a function whose purpose is to create an array of numbers from the values which were passed to it from Get Values. It does this by looping through the numbers from start to end and adding each number to the array. Once it completes that task it passes the full array back to Get Values.</p>
+                <h5>Display Numbers</h5>
+                <p>Display Numbers is a functions which takes the array created by Generate Numbers and loops through it, creating HTML for each number which is then pushed to a table in the DOM. As a part of creating the HTML, it also determines if the number is odd or even and sets a class on each line so that the numbers will be bold for even or not for odd.</p>
             </div>
         </div>
        </div>
@@ -91,8 +157,8 @@
                 <div class="col d-flex justify-content-center justify-content-md-end align-items-center">
                     <div class="row">
                         <div class="col social"><a href="https://www.linkedin.com/in/ryan-laclaire/" target="_blank"><i class="fab fa-linkedin fa-2x"></i></a></div>
-                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-github fa-2x"></i></a></div>
-                        <div class="col social"><a href="#" target="_blank"><i class="fab fa-twitter fa-2x"></i></a></div>
+                        <div class="col social"><a href="https://github.com/ryanlaclaire" target="_blank"><i class="fab fa-github fa-2x"></i></a></div>
+                        <div class="col social"><a href="https://twitter.com/ryanlaclaire32" target="_blank"><i class="fab fa-twitter fa-2x"></i></a></div>
                     </div>
                 </div>
             </div>

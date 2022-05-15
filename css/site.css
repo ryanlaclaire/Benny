@@ -80,3 +80,12 @@ main>.container {
 .appName {
     font-family: 'Racing Sans One', cursive;
 }
+
+.odd {
+    font-weight: 100;
+}
+
+.even {
+    font-weight: bold;
+    font-size: large;
+}
